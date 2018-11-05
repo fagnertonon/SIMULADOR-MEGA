@@ -1,0 +1,18 @@
+#concursoList,
+#concursoList ul {
+  list-style: none;
+}
+
+.numero selecionado{
+  background: #73AD21;
+}
+.numero nao-selecionado{
+  background: #ccc;
+}
+.ganhadores{
+  text-align: center;
+}
+.ganhador {
+  margin: 5px;
+  font-size: 25px;
+}

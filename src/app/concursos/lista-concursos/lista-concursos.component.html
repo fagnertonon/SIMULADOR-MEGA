@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-md-3">
+    <button class="btn btn-primary btn-lg" (click)='NovoConcurso()'>Novo Concurso</button>
+  </div>
+
+  <div class="col-md-3">
+
+    <button class="btn btn-primary btn-lg" (click)='GeraSorteio()'>Gerar sorteio</button>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group">
+      <select class="form-control input-lg" [(ngModel)]="concursoAtual">
+        <option *ngFor="let concurso of concursos" [ngValue]="concurso">
+          {{concurso.jogo.nome}} - n°: {{concurso.id}} - {{concurso.jogo.Sorteado()}}
+        </option>
+
+      </select>
+    </div>
+  </div>
+
+  <ul id='concursoList'>
+    <li id={{concurso.jogo.id}} class="row" *ngFor="let concurso of concursos">
+      <h2>{{concurso.jogo.nome}} N°: {{concurso.id}} - {{concurso.jogo.Sorteado()}}</h2>
+      <ul>
+        <li id='concurso'>
+
+          <div class="row numeros">
+            <div class="col-md-2 col-sm-4 numero numero-selecionado" *ngFor="let numeros of concurso.jogo.numerosSorteio">
+              {{numeros}}
+            </div>
+          </div>
+
+          <div class='ganhadores'>
+            <p class="ganhador" *ngFor="let ganhador of concurso.ganhadores">{{ganhador.descricao}}</p>
+          </div>
+
+        </li>
+      </ul>
+    </li>
+  </ul>

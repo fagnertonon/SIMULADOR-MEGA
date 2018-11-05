@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <button class="btn btn-primary btn-lg" (click)='NovoBilhete()'>Novo bilhete</button>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <select class="form-control input-lg" [(ngModel)]="concursoAtual" (ngModelChange)='AtualizaConcursoAtual($event)'>
+          <option *ngFor="let concurso of concursos" [ngValue]="concurso">
+            {{concurso.jogo.nome}} - n°: {{concurso.id}} - {{concurso.jogo.Sorteado()}}
+          </option>
+
+        </select>
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <section id="selecao-numeros">
+        <div class="row">
+          <div class="col-md-10">
+            <div class=" btn btn-default btn-circle btn-lg" [ngClass]="{'numero-selecionado': numero.bool}" *ngFor="let numero of numeros"
+              (click)='SelecionarNumero(numero.numero)'>{{numero.numero}}
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="row">
+          <div class="col-md-2">
+            <button (click)='Jogar()' class="btn btn-success btn-lg ">Jogar</button>
+          </div>
+          <div class="col-md-2">
+            <button (click)='JogarAutomatico()' class="btn btn-info btn-lg">Jogar Automático</button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+    <div class="col-md-4">
+
+      <div id='listaBilhetes'>
+        <div class="list-group">
+
+          <a class="list-group-item list-group-item-action flex-column align-items-start bilhete" *ngFor="let bilhete of concursoAtual?.bilhetes">
+
+            <div class="d-flex w-100 justify-content-between" ng-repeat="bilhete in bilhetes">
+              <h5 class="mb-1">BILHETE N°: {{bilhete.id}} - Data:{{bilhete.data.toLocaleDateString()}} -
+                {{bilhete.data.toLocaleTimeString()}}</h5>
+            </div>
+            <div class="row numeros">
+              <div class="col-md-2 col-sm-4 numero-bilhete numero-selecionado " *ngFor="let numero of bilhete.numerosSorteio">{{numero}}
+              </div>
+            </div>
+            <small>{{bilhete.resultado}}</small>
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </div>
