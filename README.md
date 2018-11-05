@@ -7,7 +7,7 @@
     - Baixar ou clonar os arquivos;
     - executar npm install;
     - executar ng serve;
-    - abrir no navegador  na porta 8000;
+    - abrir no navegador http://localhost:4200/;
 
 ## VERSÃO
     Versão 1.0
